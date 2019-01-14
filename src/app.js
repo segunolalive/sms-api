@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.use('/', routes);
+app.use('/api/v1', routes);
 
 app.use((req, res, next) => {
   res.status(404).send({ error: 'Not Found' })
