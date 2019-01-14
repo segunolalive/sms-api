@@ -4,6 +4,7 @@ module.exports = (req, res, next) => {
   const { id } = req.params;
   const data = req.body;
   const method = req.method.toLowerCase();
+  const query = id ? { where: { id } } : {};
 
   const handlers = {
     post(req, res, next) {
@@ -15,8 +16,8 @@ module.exports = (req, res, next) => {
     },
 
     get(req, res, next) {
-      const query = id ? { where: { id } } : {};
-      Message.findOne(query)
+      const Service = id ? Message.findOne : Message.findAll;
+      return Service.call(Message, query)
         .then(data => {
           return data
             ? res.status(200).send({ message: 'Found', data })
