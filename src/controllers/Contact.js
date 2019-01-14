@@ -11,8 +11,8 @@ module.exports = (req, res, next) => {
           { model: Message, as: 'receivedMessages' }
         ]
       : null;
-
-  const query = include ? { where: { id }, include } : { here: { id } };
+  const query = id ? { where: { id } } : {};
+  query.include = include;
 
   const handlers = {
     post(req, res, next) {
