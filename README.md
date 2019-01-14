@@ -12,6 +12,21 @@ This is a system that manages the user's sms
 - Users can get all messages associated with a user
 - Users can delete a message
 
+
+## Getting Started
+Clone the repo. From the root of the project, run the following:
+```
+npm install
+```
+then to set up your database and migrations, run:
+```
+npm run migrate
+```
+To run the project:
+```
+npm run start
+```
+
 ## API
 
 ### POST A CONTACT (/api/v1/contacts)
